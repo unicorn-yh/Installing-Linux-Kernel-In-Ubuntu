@@ -148,4 +148,4 @@ Linux 5.15.1
 
     要求在启动菜单里看到每个人自己的班号、学号、姓名及版本号
 
-![grub2](C:\Users\User\Videos\Captures\grub2.png)
+![grub2](README/grub2.png)
