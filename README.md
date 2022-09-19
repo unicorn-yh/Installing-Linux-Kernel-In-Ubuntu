@@ -143,7 +143,11 @@ Linux 5.15.1
 
     ```sudo update-grub```
 
-13. 找到 boot/grub/grub.cfg，运行命令 ```sudo gedit grub.cfg``` 修改引导菜单, 添加班号 学号 姓名 
+13. 找到 boot/grub/grub.cfg
+
+    运行命令 ```sudo gedit grub.cfg``` 
+
+    修改引导菜单, 添加班号 学号 姓名 
 
     重启，即可看到引导菜单
 
