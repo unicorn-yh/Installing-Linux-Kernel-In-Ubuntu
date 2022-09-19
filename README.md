@@ -6,8 +6,7 @@
 **Errors and problems confronted when doing the installation.**
 
 ```shell
-1. make[1]: *** No rule to make target 'debian/canonical-revoked-certs.pem', needed by 'certs/x509_revocation_list'.  Stop.
-解决方案：执行 sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
+
 ```
 
 
@@ -27,10 +26,6 @@
 4. linux/compiler-gcc9.h: No such file or directory
    <span style="color:red;">**解决方案：**</span>将源代码 includes/linux 文件夹下的 compiler-gcc4.h 修改成 compiler-gcc9.h
 
-5. include/linux/log2.h:22:1: warning: ignoring attribute ‘noreturn’ because it conflicts with attribute ‘const’ [-Wattributes]
-
-6. include/linux/init.h:330:6: warning: ‘init_module’ specifies less restrictive attribute than its target ‘init_minix_fs’: ‘cold’ [-Wmissing-attributes]
-
 7. /bin/sh: flex: not found
    <span style="color:red;">**解决方案：**</span>sudo apt-get install flex
    
@@ -41,32 +36,33 @@
    <span style="color:red;">**解决方案：**</span>sudo apt-get install libssl-dev
    
 10. fatal error: libelf.h: No such file or directory
-    解决方案：sudo apt-get install libelf-dev
+    <span style="color:red;">**解决方案：**</span>sudo apt-get install libelf-dev
 
-11. make[1]: *** No rule to make target 'debian/canonical-certs.pem', needed by 'certs/x509_certificate_list'.  Stop.
-    解决方案：编辑.config文件，sudo gedit .config
-    	      置空文件中的参数 CONFIG_SYSTEM_TRUSTED_KEYS = ""
-    	      或执行 sudo scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
+11. make[1]: No rule to make target 'debian/canonical-certs.pem', needed by 'certs/x509_certificate_list'.  Stop.
+    <span style="color:red;">**解决方案：**</span>编辑.config文件，sudo gedit .config
+    	               置空文件中的参数 CONFIG_SYSTEM_TRUSTED_KEYS = ""
+    	               或执行 sudo scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
 	
-12. 
-    
+12. make[1]: No rule to make target 'debian/canonical-revoked-certs.pem', needed by 'certs/x509_revocation_list'.  Stop.
+    <span style="color:red;">**解决方案：**</span>执行 sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
+	
 13. BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
     Failed to generate BTF for vmlinux
     Try to disable CONFIG_DEBUG_INFO_BTF
-    解决方案：sudo apt-get install dwarves
+    <span style="color:red;">**解决方案：**</span>sudo apt-get install dwarves
 	      
 
 14. rch/x86/Makefile:142: CONFIG_X86_X32 enabled but no binutils support
     sh ./arch/x86/boot/install.sh 5.15.1 \
 	arch/x86/boot/bzImage System.map "/boot"
-    *** Missing file: arch/x86/boot/bzImage  
-    解决方案：sudo apt-get install binutils     
-    	      make bzImage
-    	      sudo make install
-    	      sudo update-grub
+    Missing file: arch/x86/boot/bzImage  
+    <span style="color:red;">**解决方案：**</span>sudo apt-get install binutils     
+    	                make bzImage
+    	                sudo make install
+    	                sudo update-grub
     
 15. bin sh 1 zstd not found
-    解决方案：sudo apt install zstd
+    <span style="color:red;">**解决方案：**</span>sudo apt install zstd
     
 16. arch/x86/boot/compressed/vmlinux.bin.zst: No such file or directory  
 
