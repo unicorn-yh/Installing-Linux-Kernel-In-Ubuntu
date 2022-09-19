@@ -14,7 +14,7 @@ Linux 5.15.1
 
 1. make[1]: [Kbuild:36: kernel/bounds.s] Error 1
 
-   <span style="color:red;">**解决方案：**</span>sudo apt-get install lib32z1
+   <span style="color:red;">**解决方案：**</span> ```sudo apt-get install lib32z1```
 
 2. make: [Makefile:982: prepare0] Error 2
 
