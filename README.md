@@ -95,7 +95,7 @@ Linux 5.15.1
 
 1. **#check version**
 
-   lsb_release -a  $           $ <span style="color:grey;">*20.04.5*</span>
+   lsb_release -a  $           hello $ <span style="color:grey;">*20.04.5*</span>
 
    gcc --version  $           $ <span style="color:grey;">*9.4.0*</span>
 
