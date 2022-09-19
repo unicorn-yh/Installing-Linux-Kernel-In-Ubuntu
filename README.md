@@ -96,21 +96,19 @@ Linux 5.15.1
 
     
 
-**Installation Steps 安装步骤**
+#### **Installation Steps 安装步骤**
 
 1. **#check version**
 
    ```shell
    lsb_release -a     #Ubuntu version 20.04.5
-   
    gcc --version      #GCC version 9.4.0
-   
    uname -r           #Linux Kernel version 5.15.0-46-generic
    ```
 
-   
+2. **#get linux kernel which matches the version of ubuntu and gcc version above from official website (for here i choose Linux 5.15.1 as my kernel)**
 
-2. ```wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.1.tar.xz```
+   ```wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.1.tar.xz```
 
 3. ```sudo cp ./linux-5.15.1.tar.xz /usr/src```
 
