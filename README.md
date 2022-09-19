@@ -94,30 +94,55 @@ Linux 5.15.1
 **Installation Steps 安装步骤**
 
 1. **#check version**
-   lsb_release -a   20.04.5
-   gcc --version    9.4.0
-   uname -r         5.15.0-46-generic
+
+   lsb_release -a        <span style="color:grey;">*20.04.5*</span>
+
+   gcc --version          <span style="color:grey;">*9.4.0*</span>
+
+   uname -r               <span style="color:grey;">*5.15.0-46-generic*</span>
+
 2. wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.1.tar.xz
+
 3. sudo cp ./linux-5.15.1.tar.xz /usr/src
+
 4. cd /usr/src
+
 5. sudo tar xvJf ./linux-5.15.1.tar.xz
+
 6. cd ./linux-5.15.1
+
 7. **#install ncurses**
+
    sudo apt-get install libncurses5-dev build-essential kernel-package
+
    sudo apt install libncurses5-dev openssl libssl-dev build-essential pkg-config libc6-dev \
-	bison flex libelf-dev zlibc minizip libidn11-dev libidn11 kernel-package
+
+   bison flex libelf-dev zlibc minizip libidn11-dev libidn11 kernel-package
+
 8. sudo make menuconfig  **#打开配置菜单**
+
 9. sudo make -j $(nproc)    **#以最大线程数并发编译内核，nproc 最大线程数**
-12. sudo make modules_install   **#安装模块** 
+
+10. sudo make modules_install   **#安装模块** 
+
 11. sudo make install   **#安装内核**
-14. **//修改引导菜单配置**
+
+12. **//修改引导菜单配置**
+
     找到 etc/default/grub，运行命令 sudo gedit grub，编辑 GRUB 在启动引导时的菜单选项
+
     注释掉或删除 GRUB_TIMEOUT_STYLE=hidden
+
     修改 GRUB_TIMEOUT=30
+
     修改 GRUB_CMDLINE_LINUX_DEFAULT="text" 
+
     sudo update-grub
-15. //找到 boot/grub/grub.cfg，运行命令 sudo gedit grub.cfg 修改引导菜单, 添加班号 学号 姓名 
+
+13. //找到 boot/grub/grub.cfg，运行命令 sudo gedit grub.cfg 修改引导菜单, 添加班号 学号 姓名 
+
     //重启，即可看到引导菜单
+
     要求在启动菜单里看到每个人自己的班号、学号、姓名及版本号
 
 
