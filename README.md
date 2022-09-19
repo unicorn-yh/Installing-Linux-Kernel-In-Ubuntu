@@ -1,15 +1,16 @@
 # Installing-Linux-Kernel-In-Ubuntu
 #####  <span style="color:grey;">*Installing Linux 5.15.1 Kernel in Ubuntu 20.04.5 of GCC 9.4*</span>
 
-
-
-**Errors and problems confronted when doing the installation.**
-
 ```shell
-
+Version：
+Ubuntu 20.04.5 LTS
+GCC 9.4.0 
+Linux 5.15.1
 ```
 
 
+
+**Errors and problems confronted when doing the installation. 安装出现的问题.**
 
 1. make[1]: [Kbuild:36: kernel/bounds.s] Error 1
 
@@ -75,9 +76,7 @@
 
     <span style="color:red;">**解决方案：**</span>sudo apt install zstd
 
-14. arch/x86/boot/compressed/vmlinux.bin.zst: No such file or directory  
-
-15. 跨平台问题
+14. 跨平台问题
 
     sudo apt install qemu-system-arm \        # qemu
 
@@ -90,58 +89,34 @@
     ​	gdb-multiarch                    # 多平台gdb  
     ​      
 
+    
 
+**Installation Steps 安装步骤**
 
-steps
-1. #check version
+1. **#check version**
    lsb_release -a   20.04.5
    gcc --version    9.4.0
    uname -r         5.15.0-46-generic
-   
 2. wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.1.tar.xz
 3. sudo cp ./linux-5.15.1.tar.xz /usr/src
 4. cd /usr/src
 5. sudo tar xvJf ./linux-5.15.1.tar.xz
 6. cd ./linux-5.15.1
-
-7. #install ncurses
+7. **#install ncurses**
    sudo apt-get install libncurses5-dev build-essential kernel-package
    sudo apt install libncurses5-dev openssl libssl-dev build-essential pkg-config libc6-dev \
 	bison flex libelf-dev zlibc minizip libidn11-dev libidn11 kernel-package
-   
-8. sudo make menuconfig #打开配置菜单
-9. sudo make -j $(nproc) #以最大线程数并发编译内核，nproc 最大线程数
-
-10. sudo apt install qemu-system-x86 debootstrap
-11. qemu-img create rootfs.img 1G  #创建一个1G的Image 
-    qemu-img create rootfs.img 1G  #创建一个1G的Image
-    mkfs.ext4 rootfs.img  #格式化成ext4 
-    mkdir mnt #创建一个空目录用于挂载
-    sudo mount -o loop rootfs.img ./mnt/  #挂载image到mnt
-    sudo debootstrap focal ./mnt/  O#20.04
-    sudo mount -t proc /proc ./mnt/proc  #挂载一些必要的文件系统
-    sudo mount --rbind /dev ./mnt/dev
-    sudo mount --rbind /sys ./mnt/sys
-    sudo cp /etc/resolv.conf ./mnt/etc/resolv.conf
-    sudo cp /etc/apt/source.list ./mnt/etc/apt/source.list #如果稍后安装软件的时候提示证书错误，把source.list里面的https改成http
-    sudo chroot ./mnt # 切换根目录
-    passwd root       # 修改root密码
-    apt update        # 看情况安装你需要的软件
-    apt install vim gcc make build-essential 
-    sudo umount mnt  # 卸载image
-    
-12. sudo make modules_install #安装模块 
-13. sudo make install #安装内核
-
-14. //修改引导菜单配置
+8. sudo make menuconfig  **#打开配置菜单**
+9. sudo make -j $(nproc)    **#以最大线程数并发编译内核，nproc 最大线程数**
+12. sudo make modules_install   **#安装模块** 
+11. sudo make install   **#安装内核**
+14. **//修改引导菜单配置**
     找到 etc/default/grub，运行命令 sudo gedit grub，编辑 GRUB 在启动引导时的菜单选项
     注释掉或删除 GRUB_TIMEOUT_STYLE=hidden
     修改 GRUB_TIMEOUT=30
     修改 GRUB_CMDLINE_LINUX_DEFAULT="text" 
     sudo update-grub
-    
 15. //找到 boot/grub/grub.cfg，运行命令 sudo gedit grub.cfg 修改引导菜单, 添加班号 学号 姓名 
-    07162003-1820201040-黎雍卉
     //重启，即可看到引导菜单
     要求在启动菜单里看到每个人自己的班号、学号、姓名及版本号
 
