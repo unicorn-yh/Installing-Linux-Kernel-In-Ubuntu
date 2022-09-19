@@ -5,33 +5,40 @@
 
 **Errors and problems confronted when doing the installation.**
 
-1. **make[1]: [Kbuild:36: kernel/bounds.s] Error 1**
+```shell
+1. make[1]: *** No rule to make target 'debian/canonical-revoked-certs.pem', needed by 'certs/x509_revocation_list'.  Stop.
+解决方案：执行 sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
+```
+
+
+
+1. make[1]: [Kbuild:36: kernel/bounds.s] Error 1
    
-   解决方案：sudo apt-get install lib32z1
+   <span style="color:red;">**解决方案：**</span>sudo apt-get install lib32z1
    
 2. make: [Makefile:982: prepare0] Error 2
-   解决方案：sudo make menuconfig ARCH=arm CROSS_COMPILE=arm-linux-
+   <span style="color:red;">**解决方案：**</span>sudo make menuconfig ARCH=arm CROSS_COMPILE=arm-linux-
    	     Kernel Features--> 去掉 'Use the ARM  EABI to compile the kernel' 选项
    
 3. cc1: error: code model kernel does not support PIC mode
-   解决翻案：kernel源代码根目录的 Makefile 中
+   <span style="color:red;">**解决方案：**</span>kernel源代码根目录的 Makefile 中
    KBUILDS_CFLAGS 尾部添加一个编译选项 -fno-pie
 
 4. linux/compiler-gcc9.h: No such file or directory
-   解决方案：将源代码 includes/linux 文件夹下的 compiler-gcc4.h 修改成 compiler-gcc9.h
+   <span style="color:red;">**解决方案：**</span>将源代码 includes/linux 文件夹下的 compiler-gcc4.h 修改成 compiler-gcc9.h
 
 5. include/linux/log2.h:22:1: warning: ignoring attribute ‘noreturn’ because it conflicts with attribute ‘const’ [-Wattributes]
 
 6. include/linux/init.h:330:6: warning: ‘init_module’ specifies less restrictive attribute than its target ‘init_minix_fs’: ‘cold’ [-Wmissing-attributes]
 
 7. /bin/sh: flex: not found
-   解决方案：sudo apt-get install flex
+   <span style="color:red;">**解决方案：**</span>sudo apt-get install flex
    
 8. /bin/sh: 1: bison: not found
-   解决方案：sudo apt-get install bison
+   <span style="color:red;">**解决方案：**</span>sudo apt-get install bison
 
 9. fatal error: openssl/opensslv.h: No such file or directory
-   解决方案：sudo apt-get install libssl-dev
+   <span style="color:red;">**解决方案：**</span>sudo apt-get install libssl-dev
    
 10. fatal error: libelf.h: No such file or directory
     解决方案：sudo apt-get install libelf-dev
@@ -41,9 +48,8 @@
     	      置空文件中的参数 CONFIG_SYSTEM_TRUSTED_KEYS = ""
     	      或执行 sudo scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
 	
-12. make[1]: *** No rule to make target 'debian/canonical-revoked-certs.pem', needed by 'certs/x509_revocation_list'.  Stop.
-    解决方案：执行 sudo scripts/config --disable SYSTEM_REVOCATION_KEYS
-	
+12. 
+    
 13. BTF: .tmp_vmlinux.btf: pahole (pahole) is not available
     Failed to generate BTF for vmlinux
     Try to disable CONFIG_DEBUG_INFO_BTF
