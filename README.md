@@ -19,7 +19,8 @@ Linux 5.15.1
 2. make: [Makefile:982: prepare0] Error 2
 
    <span style="color:red;">**解决方案：**</span>```sudo make menuconfig ARCH=arm CROSS_COMPILE=arm-linux-```
-   	                Kernel Features--> 去掉 'Use the ARM  EABI to compile the kernel' 选项
+
+   ​					Kernel Features--> 去掉 'Use the ARM  EABI to compile the kernel' 选项
 
 3. cc1: error: code model kernel does not support PIC mode
 
@@ -48,7 +49,7 @@ Linux 5.15.1
 9. make[1]: No rule to make target 'debian/canonical-certs.pem', needed by 'certs/x509_certificate_list'.  Stop.
 
    <span style="color:red;">**解决方案：**</span>编辑.config文件，```sudo gedit .config```
-   	               置空文件中的参数 CONFIG_SYSTEM_TRUSTED_KEYS = ""
+   	               置空文件中的参数 ```CONFIG_SYSTEM_TRUSTED_KEYS = ""```
    	               或执行 ```sudo scripts/config --set-str SYSTEM_TRUSTED_KEYS ""```
 
 10. make[1]: No rule to make target 'debian/canonical-revoked-certs.pem', needed by 'certs/x509_revocation_list'.  Stop.
@@ -130,21 +131,21 @@ Linux 5.15.1
 
 11. ```sudo make install```   **#安装内核**
 
-12. **//修改引导菜单配置**
+12. **#修改引导菜单配置**
 
     找到 etc/default/grub，运行命令 ```sudo gedit grub```，编辑 GRUB 在启动引导时的菜单选项
 
-    注释掉或删除 GRUB_TIMEOUT_STYLE=hidden
+    注释掉或删除 ```GRUB_TIMEOUT_STYLE=hidden```
 
-    修改 GRUB_TIMEOUT=30
+    修改 ```GRUB_TIMEOUT=30```
 
-    修改 GRUB_CMDLINE_LINUX_DEFAULT="text" 
+    修改 ```GRUB_CMDLINE_LINUX_DEFAULT="text" ```
 
     ```sudo update-grub```
 
-13. //找到 boot/grub/grub.cfg，运行命令 ```sudo gedit grub.cfg``` 修改引导菜单, 添加班号 学号 姓名 
+13. 找到 boot/grub/grub.cfg，运行命令 ```sudo gedit grub.cfg``` 修改引导菜单, 添加班号 学号 姓名 
 
-    //重启，即可看到引导菜单
+    重启，即可看到引导菜单
 
     要求在启动菜单里看到每个人自己的班号、学号、姓名及版本号
 
