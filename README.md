@@ -95,11 +95,11 @@ Linux 5.15.1
 
 1. **#check version**
 
-   lsb_release -a    <span style="color:grey;">*#Ubuntu version 20.04.5*</span>
+   lsb_release -a    <span style="color:grey;">***#Ubuntu version 20.04.5***</span>
 
-   gcc --version      <span style="color:grey;">*#GCC version 9.4.0*</span>
+   gcc --version      <span style="color:grey;">***#GCC version 9.4.0***</span>
 
-   uname -r            <span style="color:grey;">*#Linux Kernel version 5.15.0-46-generic*</span>
+   uname -r            <span style="color:grey;">***#Linux Kernel version 5.15.0-46-generic***</span>
 
 2. wget https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.15.1.tar.xz
 
