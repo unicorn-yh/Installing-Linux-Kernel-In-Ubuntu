@@ -20,11 +20,11 @@ Linux 5.15.1
 
    <span style="color:red;">**解决方案：**</span>```sudo make menuconfig ARCH=arm CROSS_COMPILE=arm-linux-```
 
-   ​					Kernel Features--> 去掉 'Use the ARM  EABI to compile the kernel' 选项
+   ​					Kernel Features --> 去掉 'Use the ARM  EABI to compile the kernel' 选项
 
 3. cc1: error: code model kernel does not support PIC mode
 
-   <span style="color:red;">**解决方案：**</span>kernel源代码根目录的 Makefile 中 KBUILDS_CFLAGS 尾部添加一个编译选项 -fno-pie
+   <span style="color:red;">**解决方案：**</span>kernel 源代码根目录的 Makefile 中 ```KBUILDS_CFLAGS``` 尾部添加一个编译选项 ```-fno-pie```
 
 4. linux/compiler-gcc9.h: No such file or directory
 
